@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Publish application Service</title>
+</head>
+<body>
+<h1>Publish application service</h1>
+<div>
+    <h2>Variables</h2>
+    <table border="1">
+        <tr>
+            <th>Field name</th>
+            <th>Description</th>
+            <th>Required</th>
+        </tr>
+        <tr>
+            <td>project</td>
+            <td>Jira code of project in lowercase</td>
+            <td>True</td>
+        </tr>
+        <tr>
+            <td>product</td>
+            <td>System name of product in lowercase</td>
+            <td>True</td>
+        </tr>
+        <tr>
+            <td>version</td>
+            <td>Git tag for stable releases, Release number for night/test releases</td>
+            <td>True</td>
+        </tr>
+        <tr>
+            <td>build_type</td>
+            <td>One of value from list:
+                <ul>
+                    <li>stable</li>
+                    <li>night</li>
+                    <li>test</li>
+                </ul>
+            </td>
+            <td>True</td>
+        </tr>
+        <tr>
+            <td>custom</td>
+            <td>Custom folder for different versions (such as os type, same application servers, etc)</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>artifact</td>
+            <td>File for save - begin with @, for example artifact=@D:\test.txt</td>
+            <td>False</td>
+        </tr>
+    </table>
+    <h3>CURL example</h3>
+    <code>
+        curl -X POST -F "project=core" -F "product=sv" -F "version=1.0" -F "build_type=stable" -F "custom=sso_support"
+        -F "artifact=@D:\file" http://127.0.0.1:5000
+    </code>
+</div>
+</body>
+</html>

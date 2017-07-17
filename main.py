@@ -11,8 +11,6 @@ def hello_world():
     if request.method == 'GET':
         return render_template('info.html')
     else:
-        print 1
-        filepath = 'ok'
         custom = None
         project = request.form["project"]
         product = request.form['product']

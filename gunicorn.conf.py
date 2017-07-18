@@ -1,8 +1,8 @@
 import multiprocessing
 
-# bind = "127.0.0.1:8888"
+bind = "0.0.0.0:4000"
 
-bind = "unix:///srv/publish-app/publish-app.sock"
+# bind = "unix:///srv/publish-app/publish-app.sock"
 # worker numbers 2xCPUs + 1
 workers = multiprocessing.cpu_count() * 2 + 1
 user = "www-data"

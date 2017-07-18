@@ -16,24 +16,25 @@ def hello_world():
         product = request.form['product']
         version = request.form['version']
         build_type = request.form["build_type"]
+        module_name = request.form["module"]
         if 'custom' in request.form:
             custom = request.form["custom"]
-        path = mk_dir(project, product, version, build_type, custom)
+        path = mk_dir(project, product, version, build_type, module_name, custom)
         f = request.files['artifact']
         filepath = '{path}{sep}{filename}'.format(path=path, sep=os.sep, filename=secure_filename(f.filename))
         f.save(filepath)
         return filepath
 
 
-def mk_dir(project, product, version, build_type, custom):
-    path = '{base}{sep}{project}{sep}{product}{sep}'
+def mk_dir(project, product, version, build_type, module_name, custom):
+    path = '{base}{sep}{project}{sep}{product}{sep}{module}{sep}'
     if build_type != 'stable':
         pattern = '{type}-builds{sep}'.format(type=build_type, sep=os.sep)
         path += pattern
     path += '{version}{sep}'
     if custom:
         path += custom
-    path = path.format(base=settings.SAVE_PATH, sep=os.sep, project=project, product=product, version=version)
+    path = path.format(base=settings.SAVE_PATH, sep=os.sep, project=project, product=product, version=version, module=module_name)
     if not os.path.isdir(path):
         os.makedirs(path)
     return path

@@ -25,6 +25,11 @@
             <td>True</td>
         </tr>
         <tr>
+            <td>module_name</td>
+            <td>Product part - module_name</td>
+            <td>True</td>
+        </tr>
+        <tr>
             <td>version</td>
             <td>Git tag for stable releases, Release number for night/test releases</td>
             <td>True</td>
@@ -53,7 +58,7 @@
     </table>
     <h3>CURL example</h3>
     <code>
-        curl -X POST -F "project=core" -F "product=sv" -F "version=1.0" -F "build_type=stable" -F "custom=sso_support"
+        curl -X POST -F "project=core" -F "product=sv" -F "module_name=svweb" -F "version=1.0" -F "build_type=stable" -F "custom=sso_support"
         -F "artifact=@D:\file" http://127.0.0.1:5000
     </code>
 </div>

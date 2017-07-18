@@ -11,17 +11,20 @@ def hello_world():
     if request.method == 'GET':
         return render_template('info.html')
     else:
+        print 1
         custom = None
+        module_name = None
         project = request.form["project"]
         product = request.form['product']
         version = request.form['version']
         build_type = request.form["build_type"]
-        module_name = request.form["module"]
+        if "module" in request.form:
+            module_name = request.form["module"]
         if 'custom' in request.form:
             custom = request.form["custom"]
         path = mk_dir(project, product, version, build_type, module_name, custom)
         f = request.files['artifact']
-        filepath = '{path}{sep}{filename}'.format(path=path, sep=os.sep, filename=secure_filename(f.filename))
+        filepath = '{path}{filename}'.format(path=path, filename=secure_filename(f.filename))
         f.save(filepath)
         return filepath
 

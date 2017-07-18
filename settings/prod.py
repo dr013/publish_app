@@ -1,3 +1,3 @@
 from common import *
 
-SAVE_PATH = '/srv/share/builds/'
+SAVE_PATH = '/srv/share/builds'

@@ -1,10 +1,8 @@
-import multiprocessing
-
 bind = "0.0.0.0:4000"
 
 # bind = "unix:///srv/publish-app/publish-app.sock"
 # worker numbers 2xCPUs + 1
-workers = multiprocessing.cpu_count() * 2 + 1
+workers = 2
 user = "www-data"
 group = "www-data"
 errorlog = "/srv/publish-app/logs/error-gunicorn.log"

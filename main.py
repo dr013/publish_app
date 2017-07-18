@@ -27,14 +27,15 @@ def hello_world():
 
 
 def mk_dir(project, product, version, build_type, module_name, custom):
-    path = '{base}{sep}{project}{sep}{product}{sep}{module}{sep}'
+    path = '{base}{sep}{project}{sep}{product}{sep}'
     if build_type != 'stable':
         pattern = '{type}-builds{sep}'.format(type=build_type, sep=os.sep)
         path += pattern
-    path += '{version}{sep}'
+    path += '{version}{sep}{module}{sep}'
     if custom:
         path += custom
-    path = path.format(base=settings.SAVE_PATH, sep=os.sep, project=project, product=product, version=version, module=module_name)
+    path = path.format(base=settings.SAVE_PATH, sep=os.sep, project=project, product=product, version=version,
+                       module=module_name)
     if not os.path.isdir(path):
         os.makedirs(path)
     return path

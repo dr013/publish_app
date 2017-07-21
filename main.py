@@ -11,7 +11,6 @@ def hello_world():
     if request.method == 'GET':
         return render_template('info.html')
     else:
-        print 1
         custom = None
         module_name = None
         project = request.form["project"]
